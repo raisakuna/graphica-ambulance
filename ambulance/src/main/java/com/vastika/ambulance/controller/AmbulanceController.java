@@ -1,8 +1,11 @@
 package com.vastika.ambulance.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.vastika.ambulance.entity.Ambulance;
+import org.springframework.web.bind.annotation.*;
+
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 @RequestMapping(value ="/api/v1")
@@ -16,24 +19,89 @@ public class AmbulanceController {
      * 5. DELETE -
      */
 
-    @GetMapping(value ="/create")
-    public String handleCreateRequest(){
-        return "this is a create request";
+   @GetMapping(value ="/ambulance")
+    public ArrayList<Ambulance> getListOfAmbulance(){
+         ArrayList<Ambulance> ambulances = new ArrayList<>();
+       Ambulance.AmbulanceBuilder builder = Ambulance.builder()
+               .id(1L)
+               .vehicleNumber("1234")
+               .latitude(27.2345)
+               .longitude(86.5433).hospitalName("Teaching Hospital");
+       Ambulance ambulance =builder.build();
+         for(int i =0; i <=5; i++)
+         {
+             ambulances.add(ambulance);
+         }
+
+
+        return ambulances;
 
     }
 
-    @GetMapping(value ="/update")
-    public String handleUpdateRequest(){
-        return "this is a update request";
+
+
+    @GetMapping(value ="/ambulance/city")
+    public String getListOfAmbulanceOfParticularCity(@RequestParam("city") String city){
+        return "get ambulance by city";
 
     }
 
-    @GetMapping(value ="/delete")
-    public String handleDeleteRequest(){
-        return "this is a delete Request";
+    @PostMapping(value ="/ambulance")
+    public Ambulance createAmbulance(){
+        Ambulance.AmbulanceBuilder builder = Ambulance.builder()
+                .id(1L)
+                .vehicleNumber("1234")
+                .latitude(27.2345)
+                .longitude(86.5433).hospitalName("Teaching Hospital");
+        Ambulance ambulance =builder.build();
+
+        return ambulance;
 
     }
+
+    @PutMapping(value ="/ambulance")
+    public String updateAmbulance(){
+        return "ambulance data updated";
+
+    }
+
+    @PatchMapping(value ="/ambulance")
+    public String updateAmbulanceAvailability(){
+        return "update ambulance availability";
+
+    }
+
+    @DeleteMapping(value ="/ambulance")
+    public String deleteAmbulance(){
+        return "delete ambulance data";
+
+    }
+
+
 
     //baseurl/api/v1/
+    /**
+     * HTTP Protocol - 80
+     * HTTPs Protocol -443
+     *
+     * Different HTTP Status code
+     * 200 -Successful
+     * 201 - Created
+     * 204 - No Content
+     * 302 - Redirection
+     *
+     * Client Side
+     * 400 - Bad Request
+     * 401 - Unauthorized
+     * 403 - Forbidden
+     * 404 - Not Found
+     * 422 - Unprocessable Entity
+     *
+     * Server Side Error
+     * 500 - Internal Server Error
+     * 502 -Bad Gateway
+     * 503 - Service Not Available
+     *
+     */
 
 }

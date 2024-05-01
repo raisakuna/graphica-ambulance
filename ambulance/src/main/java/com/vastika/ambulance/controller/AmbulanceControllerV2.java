@@ -10,19 +10,19 @@ public class AmbulanceControllerV2 {
 
     @GetMapping(value ="/create")
     public String handleCreateRequest(){
-        return "this is a create request";
+        return "updating create v2.";
 
     }
 
     @GetMapping(value ="/update")
     public String handleUpdateRequest(){
-        return "this is a update request";
+        return "update request v2";
 
     }
 
     @GetMapping(value ="/delete")
     public String handleDeleteRequest(){
-        return "this is a delete Request";
+        return "delete Request v2";
 
     }
 

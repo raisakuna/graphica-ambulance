@@ -20,3 +20,5 @@ spring:
       org.hibernate.SQL: DEBUG
 server:
   port: 8085
+  servlet:
+    context-path: /ambulance-service

@@ -1,9 +1,8 @@
 package com.vastika.ambulance.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.*;
 import lombok.*;
-
-import javax.persistence.*;
 
 @Builder
 @Getter
